@@ -26,7 +26,6 @@ function getUserInput(){
 
 const userInput = getUserInput();
 const computerInput = getComputerInput();
-console.log(computerInput);
 
 switch(userInput){
     case 'rock':
