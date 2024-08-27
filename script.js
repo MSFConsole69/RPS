@@ -27,6 +27,9 @@ function getUserInput(){
 const userInput = getUserInput();
 const computerInput = getComputerInput();
 
+let humanScore = 0;
+let computerScore = 0;
+
 switch(userInput){
     case 'rock':
         switch(computerInput){
@@ -35,9 +38,11 @@ switch(userInput){
                 break;
             case 'paper':
                 alert("You lost!");
+                computerInput += 1;
                 break;
             case 'scissor':
                 alert("You won!");
+                humanScore += 1;
                 break;
         }
         break; 
