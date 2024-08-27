@@ -7,73 +7,97 @@ function getComputerInput() {
 }
 
 
-function getUserInput(){
-    let choice = prompt("Gimme your input: ");
+function getUserInput() {
+    let choice = prompt("Gimme your input: ").toLowerCase();
 
-    if (choice === 'rock'){
+    if (choice === 'rock') {
         return choice;
     }
 
-    else if (choice === 'paper'){
+    else if (choice === 'paper') {
         return choice;
     }
 
-    else if (choice === 'scissor'){
+    else if (choice === 'scissor') {
         return choice;
     }
 }
 
 
-const userInput = getUserInput();
-const computerInput = getComputerInput();
+
+
 
 let humanScore = 0;
 let computerScore = 0;
 
-switch(userInput){
-    case 'rock':
-        switch(computerInput){
-            case 'rock':
-                alert("It's a tie!");
-                break;
-            case 'paper':
-                alert("You lost!");
-                computerInput += 1;
-                break;
-            case 'scissor':
-                alert("You won!");
-                humanScore += 1;
-                break;
-        }
-        break; 
+function playRound(user, computer) {
+    switch (user) {
+        case 'rock':
+            switch (computer) {
+                case 'rock':
+                    alert("It's a tie!");
+                    break;
+                case 'paper':
+                    alert("You lost!");
+                    computerScore += 1;
+                    break;
+                case 'scissor':
+                    alert("You won!");
+                    humanScore += 1;
+                    break;
+            }
+            break;
 
-    case 'paper':
-        switch(computerInput){
-            case 'rock':
-                alert("You won!");
-                break;
-            case 'paper':
-                alert("It's a tie!");
-                break;
-            case 'scissor':
-                alert("You lost!");
-                break;
-        }
-        break;
+        case 'paper':
+            switch (computer) {
+                case 'rock':
+                    alert("You won!");
+                    humanScore += 1;
+                    break;
+                case 'paper':
+                    alert("It's a tie!");
+                    break;
+                case 'scissor':
+                    alert("You lost!");
+                    computerScore += 1;
+                    break;
+            }
+            break;
 
-    case 'scissor':
-        switch(computerInput){
-            case 'rock':
-                alert("You won!");
-                break;
-            case 'paper':
-                alert("You lost!");
-                break;
-            case 'scissor':
-                alert("It's a tie!")
-                break;
-        }
-        break;
+        case 'scissor':
+            switch (computer) {
+                case 'rock':
+                    alert("You won!");
+                    humanScore += 1;
+                    break;
+                case 'paper':
+                    alert("You lost!");
+                    computerScore += 1;
+                    break;
+                case 'scissor':
+                    alert("It's a tie!")
+                    break;
+            }
+            break;
+
+        default:
+            alert("Invalid input!");
+    }
+
 }
+
+
+function playGame() {
+    for (let roundCounter = 0; roundCounter < 5; roundCounter++) {
+        const userInput = getUserInput();
+        const computerInput = getComputerInput();
+        playRound(userInput, computerInput);
+    }
+    console.log("User: " + humanScore);
+    console.log("Computer: " + computerScore);
+}
+
+playGame();
+
 
 
