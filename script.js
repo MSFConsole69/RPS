@@ -93,8 +93,8 @@ function playGame() {
         const computerInput = getComputerInput();
         playRound(userInput, computerInput);
     }
-    console.log("User: " + humanScore);
-    console.log("Computer: " + computerScore);
+    alert("User: " + humanScore);
+    alert("Computer: " + computerScore);
 }
 
 playGame();
