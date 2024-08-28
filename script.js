@@ -93,11 +93,11 @@ function playGame() {
         const computerInput = getComputerInput();
         playRound(userInput, computerInput);
     }
-    alert("User: " + humanScore);
-    alert("Computer: " + computerScore);
+    alert("User: " + humanScore + " " + "Computer: " + computerScore);
 }
 
-playGame();
+const play = document.querySelector('.play');
+play.addEventListener('click', playGame);
 
 
 
