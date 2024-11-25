@@ -13,4 +13,13 @@ body, html {
   gap: 30px;
 }
 
+button{
+  padding: 20px;
+  margin: 10px;
+  background-color: aquamarine;
+}
  
+
+#human, #computer{
+  padding: 10px 10px;
+}

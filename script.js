@@ -6,98 +6,131 @@ function getComputerInput() {
     return computerChoices[randomizer];
 }
 
-
-function getUserInput() {
-    let choice = prompt("Gimme your input: ").toLowerCase();
-
-    if (choice === 'rock') {
-        return choice;
-    }
-
-    else if (choice === 'paper') {
-        return choice;
-    }
-
-    else if (choice === 'scissor') {
-        return choice;
-    }
-}
-
-
-
-
-
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(user, computer) {
-    switch (user) {
+
+let rock = document.createElement('button');
+let paper = document.createElement('button');
+let scissor = document.createElement('button');
+let play = document.querySelector('.play');
+
+let content = document.querySelector('.choices');
+content.style.cssText = 'display: block;';
+
+let scoreBoard = document.createElement('div');
+scoreBoard.style.cssText = 'display: block;';
+
+let human = document.createElement('span');
+human.id = 'human';
+
+let computer = document.createElement('span');
+computer.id = 'computer';
+
+
+
+play.addEventListener('click', () => {
+    play.remove();
+    content.appendChild(rock);
+    rock.textContent = "Rock";
+    rock.id = 'rock';
+    content.appendChild(paper);
+    paper.textContent = "Paper";
+    paper.id = 'paper';
+    content.appendChild(scissor);
+    scissor.textContent = "Scissor";
+    scissor.id = 'scissor';
+    content.appendChild(scoreBoard);
+    scoreBoard.appendChild(computer);
+    scoreBoard.appendChild(human);
+})
+
+rock.addEventListener('click', () => {
+    let computerInput = getComputerInput();
+
+    switch(computerInput){
         case 'rock':
-            switch (computer) {
-                case 'rock':
-                    alert("It's a tie!");
-                    break;
-                case 'paper':
-                    alert("You lost!");
-                    computerScore += 1;
-                    break;
-                case 'scissor':
-                    alert("You won!");
-                    humanScore += 1;
-                    break;
-            }
-            break;
+            alert("Tie!");
+        break;
 
         case 'paper':
-            switch (computer) {
-                case 'rock':
-                    alert("You won!");
-                    humanScore += 1;
-                    break;
-                case 'paper':
-                    alert("It's a tie!");
-                    break;
-                case 'scissor':
-                    alert("You lost!");
-                    computerScore += 1;
-                    break;
-            }
-            break;
+            console.log("Lost!");
+            computerScore += 1;
+            computer.textContent = "Computer: " + computerScore;
+        break;
 
         case 'scissor':
-            switch (computer) {
-                case 'rock':
-                    alert("You won!");
-                    humanScore += 1;
-                    break;
-                case 'paper':
-                    alert("You lost!");
-                    computerScore += 1;
-                    break;
-                case 'scissor':
-                    alert("It's a tie!")
-                    break;
-            }
-            break;
-
-        default:
-            alert("Invalid input!");
+            console.log("Won!");
+            humanScore += 1;
+            human.textContent = "Human: " + humanScore;
+        break;
     }
+})
 
-}
+paper.addEventListener('click', () => {
+    let computerInput = getComputerInput();
 
+    switch(computerInput){
+        case 'rock':
+            console.log("Won!");
+            humanScore += 1;
+            human.textContent = "Human: " + humanScore;
+        break;
 
-function playGame() {
-    for (let roundCounter = 0; roundCounter < 5; roundCounter++) {
-        const userInput = getUserInput();
-        const computerInput = getComputerInput();
-        playRound(userInput, computerInput);
+        case 'paper':
+            alert("Tie!");
+        break;
+
+        case 'scissor':
+            console.log("Lost!");
+            computerScore += 1;
+            computer.textContent = "Computer: " + computerScore;
+        break;
     }
-    alert("User: " + humanScore + " " + "Computer: " + computerScore);
-}
+})
 
-const play = document.querySelector('.play');
-play.addEventListener('click', playGame);
+scissor.addEventListener('click', () => {
+    let computerInput = getComputerInput();
+
+    switch(computerInput){
+        case 'rock':
+            console.log("Won!");
+            humanScore += 1;
+            human.textContent = "Human: " + humanScore;
+        break;
+
+        case 'paper':
+            alert("Tie!");
+        break;
+
+        case 'scissor':
+            console.log("Lost!");
+            computerScore += 1;
+            computer.textContent = "Computer: " + computerScore;
+        break;
+    }
+})
+
+
+// score.addEventListener('click', () => {
+//     alert(humanScore + ' ' + computerScore);
+// })
+
+// play.addEventListener('click', () => {
+//     alert(humanScore + ' ' + computerScore);
+// })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
